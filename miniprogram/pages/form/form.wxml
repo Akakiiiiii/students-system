@@ -1,0 +1,41 @@
+<view style="background-color:rgb(247,248,250);height:100%;">
+  <van-radio-group value="{{ radio }}" bind:change="onChange">
+  <van-cell-group>
+    <van-cell
+      title="无发热"
+      clickable
+      data-name="1"
+      bind:click="onClick"
+    >
+      <van-radio slot="right-icon" name="1" />
+    </van-cell>
+    <van-cell
+      title="有发热"
+      clickable
+      data-name="2"
+      bind:click="onClick"
+    >
+      <van-radio slot="right-icon" name="2" />
+    </van-cell>
+  </van-cell-group>
+</van-radio-group>
+<view style="height:4%;background-color:rgb(247,248,250)"></view>
+<view wx:for="{{oldCitys}}" class="city-item">{{item}}</view>
+<view wx:for="{{citys}}" class="city-item">{{item}}</view>
+<view class="button-wrap">
+  <van-button type="primary" bind:click="handleShowArea">添加去向地址</van-button>
+</view>
+<view style="position:fixed;bottom:10px;width:100%;">
+  <van-button type="info" bind:click="handleForm" size="large" round>提交</van-button>
+</view>
+</view>
+
+
+<view>
+  <van-popup show="{{ showArea }}" position="bottom" custom-style="height: 35%;" bind:close="onClose">
+    <van-area area-list="{{ areaList }}" bind:cancel="onClose"  bind:confirm="handleCommit" />
+  </van-popup>
+</view> 
+
+<van-toast id="van-toast" />
+

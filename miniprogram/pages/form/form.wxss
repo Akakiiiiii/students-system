@@ -1,0 +1,11 @@
+/* pages/form/form.wxss */
+.city-item{
+  padding: 15rpx;
+  border-bottom:1px solid rgb(245,246,247);
+  background-color: #fff;
+}
+.button-wrap{
+  display: flex;
+  justify-content: center;
+  padding:20rpx 0;
+}

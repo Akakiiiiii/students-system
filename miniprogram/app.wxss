@@ -1,0 +1,8 @@
+.container {
+  height: 560rpx;
+  box-sizing: border-box;
+}
+page{
+  height: 100%;
+  width:100%;
+}

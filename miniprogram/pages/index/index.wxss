@@ -1,0 +1,121 @@
+ec-canvas {
+  width: 100%;
+}
+.head{
+  padding: 20rpx 30rpx;
+  border-bottom: 1px solid rgb(237,237,237);
+}
+.text{
+  padding:0 20rpx;
+  border-left: 5px solid rgb(61,105,225);
+  font-weight: 700;
+  font-size: 28rpx;
+}
+.img{
+  height: 350rpx;
+  width: 100%;
+}
+.top-fixed{
+  position: fixed;
+  top:0;
+  left: 0;
+  right: 0;
+  z-index: 99;
+  padding:0 20rpx;
+  height: 75rpx;
+  background-color: #fff;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+}
+.top{
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.swiper{
+  height: 100%;
+}
+.tabs{
+  width:100%;
+  height:100%; 
+ margin-top:75rpx ;
+}
+van-tabs{
+  height: 100%;
+}
+.van-tab--active{
+  color: rgb(65,99,223) !important;
+  font-weight: 600 !important;
+}
+.footer-fixed{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  padding: 10rpx 0;
+}
+.footer{
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+.button-right{
+  flex: 1;
+}
+.tip{
+  background-color: rgb(247,248,250);
+  padding: 18rpx;
+  color:rgb(140,153,160);
+}
+.gather{
+  padding:20rpx;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-around;
+}
+.name-button{
+  padding:15rpx;
+}
+.background-img{
+  height:300rpx;
+  width: 100%;
+  background-image: url(https://cdn.xieyezi.com/nvov.jpg);
+  background-position:center;
+  background-size: cover;
+  color: #fff;
+}
+.rumors-text{
+  display: block;
+  padding-top:50rpx;
+  margin-left: 10rpx;
+  font-size: 75rpx;
+  font-weight: 600;
+}
+.rumors-title{
+  padding-top:25rpx;
+  margin-left: 10rpx;
+  display: block;
+  font-size: 36rpx;
+  font-weight: 500;
+}
+.rumors-img{
+  width: 250rpx;
+  height:250rpx;
+  position: absolute;
+  top:10px;
+  right:10px;
+}
+.detail-wrap{
+  padding:15rpx;
+}
+.main{
+  font-size: 28rpx;
+  font-weight: 600;
+}
+.body{
+  height:110rpx;
+  color: rgba(0,0,0,.65);
+  font-size:24rpx;
+}
