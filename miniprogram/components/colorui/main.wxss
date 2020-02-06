@@ -1,0 +1,132 @@
+
+/* ==================
+         轮播
+ ==================== */
+swiper .a-swiper-dot {
+	display: inline-block;
+	width: 16rpx;
+	height: 16rpx;
+	background: rgba(0, 0, 0, .3);
+	border-radius: 50%;
+	vertical-align: middle;
+}
+
+swiper[class*="-dot"] .wx-swiper-dots {
+	display: flex;
+	align-items: center;
+	width: 100%;
+	justify-content: center;
+}
+
+swiper.square-dot .wx-swiper-dot {
+	background-color: var(--white);
+	opacity: 0.4;
+	width: 10rpx;
+	height: 10rpx;
+	border-radius: 20rpx;
+	margin: 0 8rpx !important;
+}
+
+swiper.square-dot .wx-swiper-dot.wx-swiper-dot-active {
+	opacity: 1;
+	width: 30rpx;
+}
+
+swiper.round-dot .wx-swiper-dot {
+	width: 10rpx;
+	height: 10rpx;
+	position: relative;
+	margin: 4rpx 8rpx !important;
+}
+
+swiper.round-dot .wx-swiper-dot.wx-swiper-dot-active::after {
+	content: "";
+	position: absolute;
+	width: 10rpx;
+	height: 10rpx;
+	top: 0rpx;
+	left: 0rpx;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+	background-color: var(--white);
+	border-radius: 20rpx;
+}
+
+swiper.round-dot .wx-swiper-dot.wx-swiper-dot-active {
+	width: 18rpx;
+	height: 18rpx;
+}
+
+.screen-swiper {
+	min-height: 375rpx;
+}
+
+.screen-swiper,
+.screen-swiper video,
+.swiper-item ,
+.swiper-item video {
+	width: 100%;
+	display: block;
+	height: 100%;
+	margin: 0;
+	pointer-events: none;
+}
+
+.card-swiper {
+	height: 600rpx !important;
+}
+
+.card-swiper swiper-item {
+	width: 610rpx !important;
+	left: 70rpx;
+	box-sizing: border-box;
+	padding: 40rpx 0rpx 70rpx;
+	overflow: initial;
+}
+
+.card-swiper swiper-item .swiper-item {
+	width: 100%;
+	display: block;
+	height: 100%;
+	border-radius: 10rpx;
+	transform: scale(0.9);
+	transition: all 0.2s ease-in 0s;
+	overflow: hidden;
+}
+
+.card-swiper swiper-item.cur .swiper-item {
+	transform: none;
+	transition: all 0.2s ease-in 0s;
+}
+
+
+.tower-swiper {
+	height: 420rpx;
+	position: relative;
+	max-width: 750rpx;
+	overflow: hidden;
+}
+
+.tower-swiper .tower-item {
+	position: absolute;
+	width: 300rpx;
+	height: 380rpx;
+	top: 0;
+	bottom: 0;
+	left: 50%;
+	margin: auto;
+	transition: all 0.2s ease-in 0s;
+	opacity: 1;
+}
+
+.tower-swiper .tower-item.none {
+	opacity: 0;
+}
+
+.tower-swiper .tower-item .swiper-item {
+	width: 100%;
+	height: 100%;
+	border-radius: 6rpx;
+	overflow: hidden;
+}

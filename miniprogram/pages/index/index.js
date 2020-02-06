@@ -76,7 +76,8 @@ Page({
     current: 0,
     passHuBeiList:[],
     hotList:[],
-    rumors:[]
+    rumors:[],
+    cardCur: 0
   },
   changeCurrent(e) {
     this.setData({
@@ -96,6 +97,11 @@ Page({
   skipForm(){
     wx.navigateTo({
       url: '../form/form'
+    })
+  },
+  cardSwiper(e) {
+    this.setData({
+      cardCur: e.detail.current
     })
   },
   loginOut(){
