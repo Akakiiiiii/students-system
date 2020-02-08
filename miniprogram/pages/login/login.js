@@ -2,10 +2,10 @@
 var app = getApp()
 Page({
   data: {
-    disabled:true,
+    disabled:false,
     current:0,
-    account:'',
-    password:'',
+    account:'123456',
+    password:'123456',
     images:[
       '../../images/openEyes.png',
       '../../images/closeEyes.png'

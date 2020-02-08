@@ -38,6 +38,18 @@ Page({
     app.globalData.user.passCity = [...this.data.oldCitys,...this.data.citys]
     wx.navigateBack()
   },
+  delete1(e){
+    this.data.oldCitys.splice(e.currentTarget.dataset.index,1)
+    this.setData({
+      oldCitys: this.data.oldCitys
+    })
+  },
+  delete2(e) {
+    this.data.citys.splice(e.currentTarget.dataset.index, 1)
+    this.setData({
+      citys: this.data.citys
+    })
+  },
   handleCommit(e){
     let city = ''
     let citys = this.data.citys

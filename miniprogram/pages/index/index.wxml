@@ -8,19 +8,19 @@
     </view>
   </view>
 </view>
-<view class="tabs">
+      <view class="tabs">
   <van-tabs active="{{ active }}" color="rgb(68,99,226)" line-width="35" bind:change="changeCurrent">
     <van-tab title="主页">
       <view class="head">
         <view class="text">本校学生去向分布地图</view>
       </view>
-      <view class="container">
+      <view class="container" >
         <ec-canvas ec="{{ec}}" id="mychart-dom-bar"></ec-canvas>
       </view>
       <view class="head">
         <view class="text">辟谣与防护</view>
     </view>
-      <swiper class="card-swiper square-dot" style="margin-bottom:120rpx;" bindchange="cardSwiper" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500"  indicator-color="#8799a3" indicator-active-color="#0081ff" >
+    <swiper style="margin-bottom:120rpx;" class="card-swiper square-dot"  bindchange="cardSwiper" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500"  indicator-color="#8799a3" indicator-active-color="#0081ff" >
           <swiper-item class="{{cardCur==index?'cur':''}}" wx:for="{{rumors}}" wx:key="index">
             <view class="swiper-item">
               <view class="background-img">
@@ -30,7 +30,7 @@
             </view>
             <view class="detail-wrap">
               <view class="main">{{item.mainSummary}}</view>
-              <scroll-view class="body" scroll-y="true">{{item.body}}</scroll-view>
+              <view class="body" >{{item.body}}</view>
             </view>
           </view>
           </swiper-item>
@@ -44,7 +44,7 @@
         </view>
       </view>
       <view class="tip">有发热症状的学生</view>
-      <view class="gather">
+      <view class="gather last">
         <view  wx:for="{{hotList}}" class="name-button" wx:key="index">
           <van-button type="danger" size="small" data-index="{{index}}" bind:click="showDetail2">{{item.name}}</van-button>
         </view>
@@ -62,3 +62,4 @@
 </view>
 
 <van-dialog id="van-dialog" />
+<van-toast id="van-toast" />

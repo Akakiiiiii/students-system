@@ -1,6 +1,7 @@
 import * as echarts from '../../ec-canvas/echarts';
 import geoJson from './mapData.js';
 import Dialog from '@vant/weapp/dialog/dialog';
+import Toast from '@vant/weapp/toast/toast';
 echarts.registerMap('china', geoJson);
 const app = getApp();
 function initOption(data) {
@@ -95,9 +96,16 @@ Page({
     })
   },
   skipForm(){
-    wx.navigateTo({
-      url: '../form/form'
-    })
+    if(!this.data.isLogin){
+      Toast('请先登录')
+      wx.navigateTo({
+        url: '../login/login'
+      })
+    }else {
+      wx.navigateTo({
+        url: '../form/form'
+      })
+    }
   },
   cardSwiper(e) {
     this.setData({

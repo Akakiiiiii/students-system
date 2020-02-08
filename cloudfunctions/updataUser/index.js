@@ -9,16 +9,16 @@ const db = cloud.database()
 // 云函数入口函数
 const _ = db.command
 exports.main = async (event, context) => {
-  let data = await db.collection('user').where({
-      _id: event._id
-    }).get()
-  let arr = [...data.data[0].passCity,...event.citys]
-  console.log(arr)
+  // let data = await db.collection('user').where({
+  //     _id: event._id
+  //   }).get()
+  // let arr = [...data.data[0].passCity,...event.citys]
+  // console.log(arr)
   await db.collection('user').where({
     _id: event._id
   }).update({
       data: {
-        passCity: arr,
+        passCity: event.citys,
         isHot: event.isHot - 0,
         isCommited:1
       },
