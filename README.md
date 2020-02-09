@@ -1,12 +1,20 @@
-# 云开发 quickstart
+**团队信息：**
 
-这是云开发的快速启动指引，其中演示了如何上手使用云开发的三大基础能力：
+我们是一个都由大学生组成的队伍（目前都是大二在读）
 
-- 数据库：一个既可在小程序前端操作，也能在云函数中读写的 JSON 文档型数据库
-- 文件存储：在小程序前端直接上传/下载云端文件，在云开发控制台可视化管理
-- 云函数：在云端运行的代码，微信私有协议天然鉴权，开发者只需编写业务逻辑代码
+**项目简介：**
 
-## 参考文档
+   在这次灾情中，学校需要收集学生的各种信息，需要让学生填写各种ex表通知各种班级负责人统计各种ex表，所以我们开发了这款小程序，让双方都有一个舒服的环境。
 
-- [云开发文档](https://developers.weixin.qq.com/miniprogram/dev/wxcloud/basis/getting-started.html)
+**实现功能：**
 
+ - 学生自主上报自己的一些状况，也可以查看学校内学生在地图的分布。
+ - 管理员还可以快速获取到达过湖北的学生以及有发热症状的学生和他们的联系方式。
+ - 同时也可以发布一些辟谣的信息给学生。
+
+
+**效果预览：**
+![enter description here](https://ask.qcloudimg.com/draft/4699402/mf1sl2nh87.gif)
+![enter description here](https://ask.qcloudimg.com/draft/4699402/nlxnnpvjl5.gif)
+![enter description here](https://ask.qcloudimg.com/draft/4699402/nlxnnpvjl5.gif)
+![enter description here](https://ask.qcloudimg.com/draft/4699402/hc5zn2udvd.gif)
