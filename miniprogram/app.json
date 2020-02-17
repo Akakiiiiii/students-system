@@ -1,7 +1,6 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/login/login",
     "pages/form/form"
   ],
   "window": {
@@ -9,7 +8,8 @@
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#F6F6F6",
     "navigationBarTitleText": "XXX大学",
-    "navigationBarTextStyle": "black"
+    "navigationBarTextStyle": "black",
+    "navigationStyle":"custom"
   },
   "sitemapLocation": "sitemap.json"
 }

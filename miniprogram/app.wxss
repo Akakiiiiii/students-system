@@ -1,10 +1,11 @@
 @import "./components/colorui/main.wxss";
 .container {
-  height: 560rpx;
+  height: 580rpx;
   box-sizing: border-box;
 }
 page{
   height: 100%;
   width:100%;
   background-color: #fff;
+  box-sizing: border-box;
 }

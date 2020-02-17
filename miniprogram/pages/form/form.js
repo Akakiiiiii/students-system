@@ -12,7 +12,8 @@ Page({
     showArea: false,
     oldCitys:[],
     citys:[],
-    radio: '1'
+    radio: '1',
+    isPut:false
   },
   async handleForm(){
     let citys = []
@@ -21,33 +22,34 @@ Page({
     })
     citys = [...new Set(citys)]
     Toast('提交成功')
-    await wx.cloud.callFunction({
-      name: 'updataArea',
-      data: {
-        citys: citys
-      }
-    })
+    if(!citys.length){
+      Toast('请选择地址')
+      return
+    }
+      await wx.cloud.callFunction({
+        name: 'updataArea',
+        data: {
+          citys: citys,
+          isCommited:this.data.isCommited
+        }
+      }).then((res)=>{
+        console.log(res)
+      })
     await wx.cloud.callFunction({
       name: 'updataUser',
       data: {
         citys: this.data.citys,
-        _id: app.globalData.user._id,
         isHot: this.data.radio
       }
     })
-    app.globalData.user.passCity = [...this.data.oldCitys,...this.data.citys]
+    // app.globalData.user.passCity = [...this.data.oldCitys,...this.data.citys]
     wx.navigateBack()
-  },
-  delete1(e){
-    this.data.oldCitys.splice(e.currentTarget.dataset.index,1)
-    this.setData({
-      oldCitys: this.data.oldCitys
-    })
   },
   delete2(e) {
     this.data.citys.splice(e.currentTarget.dataset.index, 1)
     this.setData({
-      citys: this.data.citys
+      citys: this.data.citys,
+      isPut: false
     })
   },
   handleCommit(e){
@@ -62,13 +64,16 @@ Page({
     this.setData({
       citys
     })
-    this.setData({ show: false, showArea: false });
+    this.setData({ show: false, showArea: false,isPut:true });
   },
   showPopup() {
     this.setData({ show: true });
   },
   handleShowArea() {
     this.setData({ showArea: true });
+  },
+  backPage(){
+    wx.navigateBack()
   },
   onClose() {
     this.setData({ show: false, showArea: false });
@@ -87,8 +92,10 @@ Page({
   },
   onShow(){
     this.setData({
-      oldCitys: app.globalData.user.passCity,
-      radio: app.globalData.user.isHot +''
+      citys: app.globalData.user.passCity||[],
+      radio: app.globalData.user.isHot +'',
+      isPut: app.globalData.user.isPut,
+      isCommited: app.globalData.user.isCommited
     })
   }
 })

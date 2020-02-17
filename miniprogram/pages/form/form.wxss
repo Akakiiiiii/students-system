@@ -1,4 +1,14 @@
 /* pages/form/form.wxss */
+.top{
+  height: 25%;
+  width: 100%;
+  position: relative;
+}
+.close{
+  position: absolute;
+  top:40rpx;
+  left: 15rpx;
+}
 .city-item{
   padding: 15rpx;
   border-bottom:1px solid rgb(245,246,247);

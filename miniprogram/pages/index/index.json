@@ -8,6 +8,7 @@
     "van-popup": "@vant/weapp/popup/index",
     "van-area": "@vant/weapp/area/index",
     "van-dialog": "@vant/weapp/dialog/index",
-    "van-toast": "@vant/weapp/toast/index"
+    "van-toast": "@vant/weapp/toast/index",
+    "van-circle": "@vant/weapp/circle/index"
   }
 }

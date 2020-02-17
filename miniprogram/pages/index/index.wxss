@@ -1,3 +1,14 @@
+
+.top-fixed{
+  width: 100%;
+  height: 20%;
+  background:linear-gradient(45deg, #39b54a, #8dc63f);
+}
+.top-color{
+  width: 100%;
+  height: 21%;
+  background-color: rgb(241,241,241);
+}
 ec-canvas {
   width: 100%;
 }
@@ -5,6 +16,13 @@ ec-canvas {
   padding: 20rpx 30rpx;
   border-bottom: 1px solid rgb(237,237,237);
   background-color: rgb(246,246,246);
+}
+.text-wrap{
+  background-color: #fff;
+  margin-top:-40rpx;
+  padding:20rpx 20rpx;
+  border-top-left-radius: 35rpx;
+  border-top-right-radius: 35rpx;
 }
 .text{
   padding:0 20rpx;
@@ -15,12 +33,6 @@ ec-canvas {
 .img{
   height: 350rpx;
   width: 100%;
-}
-.top-fixed{
-  padding:0 20rpx;
-  height: 75rpx;
-  background-color: #fff;
-  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
 }
 .top{
   height: 100%;
@@ -76,10 +88,6 @@ van-tabs{
 .background-img{
   height:300rpx;
   width: 100%;
-  background-image: url(https://cdn.xieyezi.com/nvov.jpg);
-  background-position:center;
-  background-size: cover;
-  color: #fff;
 }
 .rumors-text{
   display: block;
@@ -116,4 +124,9 @@ van-tabs{
 }
 .last{
   margin-bottom: 120rpx;
+}
+.dec-text{
+  width:110px;
+  text-align: center;
+  color:rgb(242,47,80);
 }
