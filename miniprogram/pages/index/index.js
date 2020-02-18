@@ -1,6 +1,7 @@
 import * as echarts from '../../ec-canvas/echarts';
 import geoJson from './mapData.js';
 import Dialog from '@vant/weapp/dialog/dialog';
+import Toast from '@vant/weapp/toast/toast';
 echarts.registerMap('china', geoJson);
 const app = getApp();
 function initOption(data) {
@@ -45,7 +46,7 @@ function initOption(data) {
     series: [{
       left: 'center',
       type: 'map',
-      name: '学生到访人数',
+      name: '人数',
       label: {
         show: true,
         position: 'inside',
@@ -76,8 +77,19 @@ Page({
     current: 0,
     passHuBeiList:[],
     hotList:[],
-    rumors:[],
-    cardCur: 0
+    rumors: ['../../images/1.jpg', '../../images/2.jpg','../../images/3.jpg'],
+    cardCur: 0,
+    showDetail:false,
+    hubei:0,
+    anquan:0,
+    green: {
+      '0%': '#39b54a',
+      '100%': '#8dc63f'
+    },
+    red:{
+      '0%': '#f43f3b',
+      '100%': '#ec008c'
+    }
   },
   changeCurrent(e) {
     this.setData({
@@ -89,85 +101,53 @@ Page({
       active: e.detail.current
     })
   },
-  skipLogin(){
-    wx.navigateTo({
-      url:'../login/login'
+  skipForm(e){
+    let user = e.detail.userInfo
+    wx.cloud.callFunction({
+      name:'login',
+      data:{
+        user
+      }
+    }).then((res)=>{
+      app.globalData.user = res.result.data[0]
+      wx.navigateTo({
+        url: '../form/form'
+      })
     })
+    // if(!this.data.isLogin){
+    //   Toast('请先登录')
+    //   wx.navigateTo({
+    //     url: '../login/login'
+    //   })
+    // }else {
+    // }
   },
-  skipForm(){
-    wx.navigateTo({
-      url: '../form/form'
+  handleShowDetail(){
+    this.setData({
+      showDetail:true
     })
+    wx.cloud.callFunction({
+      name:'getPercent',
+    }).then((res)=>{
+      this.setData({
+        hubei:res.result.hubei,
+        anquan:res.result.anquan
+      })
+    })
+    // setTimeout(()=>{
+    //   this.setData({
+    //     hubei: 100,
+    //     anquan: 100
+    //   })
+    // },1000)
   },
   cardSwiper(e) {
     this.setData({
       cardCur: e.detail.current
     })
   },
-  loginOut(){
-    const self = this
-    wx.removeStorage({
-      key: '_id',
-      success(res) {
-        self.setData({
-          isLogin:false
-        })
-      }
-    })
-  },
-  showDetail(e){
-    Dialog.alert({
-      title: '联系信息',
-      message: '电话号码：' + this.data.passHuBeiList[e.currentTarget.dataset.index - 0].phone +'\n' + '家庭住址：xxx-xxx-xxx'
-    })
-  },
-  showDetail2(e) {
-    Dialog.alert({
-      title: '联系信息',
-      message: '电话号码：' + this.data.hotList[e.currentTarget.dataset.index - 0].phone + '\n' + '家庭住址：xxx-xxx-xxx'
-    })
-  },
   onLoad(){
     const self = this
-    wx.request({
-      url: 'https://lab.isaaclin.cn/nCoV/api/rumors',
-      success(res){
-        self.setData({
-          rumors:res.data.results
-        })
-      }
-    })
-    wx.cloud.callFunction({
-      name:'getStudents'
-    }).then((res)=>{
-      let result = res.result
-      this.setData({
-        passHuBeiList: result.passHuBeiList,
-        hotList:result.hotList
-      })
-    })
-    let id = wx.getStorageSync('_id')
-    if (id) {
-      wx.cloud.callFunction({
-        name: 'entry',
-        data: {
-          _id: id
-        }
-      }).then((res) => {
-        app.globalData.user = res.result.data[0]
-        app.globalData.isLogin = true
-        this.setData({
-          isLogin:true
-        })
-      })
-    }
-  },
-  onShow(){
-    if (app.globalData.isLogin){
-      this.setData({
-        isLogin: app.globalData.isLogin
-      })
-    }
   },
   onReady() {
     this.ecComponent = this.selectComponent('#mychart-dom-bar');

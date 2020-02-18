@@ -74,7 +74,7 @@ swiper.round-dot .wx-swiper-dot.wx-swiper-dot-active {
 }
 
 .card-swiper {
-	height: 600rpx !important;
+	height: 400rpx !important;
 }
 
 .card-swiper swiper-item {

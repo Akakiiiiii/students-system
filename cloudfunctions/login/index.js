@@ -8,19 +8,16 @@ const db = cloud.database().collection('user')
 
 // 云函数入口函数
 exports.main = async (event, context) => {
-  let data = await db.where({
-    account: event.account,
-    password: event.password-0
+  let result = await db.where({
+      openId: event.userInfo.openId
   }).get()
-  if(data.data.length){
-    return {
-      code:200,
-      data
-    }
-  }else{
-    return {
-      code:400
-    }
+  if(!result.data.length){
+    Object.assign(event.user, event.userInfo)
+    event.user.isPut = false
+    event.user.isHot = 0
+    await db.add({
+      data:event.user
+    })
   }
-  
+  return result
 }

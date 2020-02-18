@@ -1,64 +1,42 @@
-<!--index.wxml-->
-<view class="top-fixed">
-  <view class="top">
-    <van-icon name="wap-nav" size="25px" />
-    <van-button round type="primary" color="linear-gradient(to right, #4bb0ff, #6149f6)" size="small" class="button" bind:click="skipLogin" wx:if="{{!isLogin}}">登录</van-button>
-    <view wx:else>
-    <van-button round type="primary" color="linear-gradient(to right, #4bb0ff, #6149f6)" size="small" class="button" bind:click="loginOut">登出</van-button>
+
+<view class="top-fixed"></view>
+<view class="top-color"></view>
+<view class="text-wrap"><text class="text">人数分布地图</text> </view>
+<swiper style="margin-top:-500rpx;" class="card-swiper square-dot" bindchange="cardSwiper" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500" indicator-color="#8799a3" indicator-active-color="#0081ff">
+  <swiper-item class="{{cardCur==index?'cur':''}}" wx:for="{{rumors}}" wx:key="index">
+    <view class="swiper-item">
+      <image class="background-img" src="{{item}}" >
+      </image>
     </view>
-  </view>
+  </swiper-item>
+</swiper>
+
+
+<view class="container" style="margin-top:50rpx;">
+  <ec-canvas ec="{{ec}}" id="mychart-dom-bar"></ec-canvas>
 </view>
-<view class="tabs">
-  <van-tabs active="{{ active }}" color="rgb(68,99,226)" line-width="35" bind:change="changeCurrent">
-    <van-tab title="主页">
-      <view class="head">
-        <view class="text">本校学生去向分布地图</view>
-      </view>
-      <view class="container">
-        <ec-canvas ec="{{ec}}" id="mychart-dom-bar"></ec-canvas>
-      </view>
-      <view class="head">
-        <view class="text">辟谣与防护</view>
-    </view>
-      <swiper class="card-swiper square-dot" style="margin-bottom:120rpx;" bindchange="cardSwiper" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500"  indicator-color="#8799a3" indicator-active-color="#0081ff" >
-          <swiper-item class="{{cardCur==index?'cur':''}}" wx:for="{{rumors}}" wx:key="index">
-            <view class="swiper-item">
-              <view class="background-img">
-              <text class="rumors-text">谣言</text>
-              <text class="rumors-title">{{item.title}}</text>
-              <image class="rumors-img" src="../../images/badge-big@2x.5395c013.png"></image>
-            </view>
-            <view class="detail-wrap">
-              <view class="main">{{item.mainSummary}}</view>
-              <scroll-view class="body" scroll-y="true">{{item.body}}</scroll-view>
-            </view>
-          </view>
-          </swiper-item>
-      </swiper>
-    </van-tab>
-    <van-tab title="详细">
-      <view class="tip">经过湖北的学生</view>
-      <view class="gather">
-        <view  wx:for="{{passHuBeiList}}" class="name-button" wx:key="index">
-          <van-button type="warning" size="small" data-index="{{index}}" bind:click="showDetail">{{item.name}}</van-button>
-        </view>
-      </view>
-      <view class="tip">有发热症状的学生</view>
-      <view class="gather">
-        <view  wx:for="{{hotList}}" class="name-button" wx:key="index">
-          <van-button type="danger" size="small" data-index="{{index}}" bind:click="showDetail2">{{item.name}}</van-button>
-        </view>
-      </view>
-    </van-tab>
-  </van-tabs>
+
+<view style="padding:30rpx;height:60rpx;" wx:if="{{!showDetail}}">
+  <van-button type="primary" size="large" bind:click="handleShowDetail" style="height:60rpx;" block>展示详细</van-button>
+</view>
+
+
+<view style="padding:0 90rpx;display:flex;justify-content:space-between;;" wx:if="{{showDetail}}">
+<van-circle value="{{hubei}}" stroke-width="10"  size="110" color="{{red}}">{{hubei}}%</van-circle>
+<van-circle value="{{anquan}}" stroke-width="10" size="110" color="{{green}}">{{anquan}}%</van-circle>
+</view>
+
+<view style="padding:0 90rpx 120rpx 90rpx;display:flex;justify-content:space-between;" wx:if="{{showDetail}}">
+<text class="dec-text">在湖北的人数</text>
+<text style="color:rgb(68,183,72);" class="dec-text">安全的人数</text>
 </view>
 
 <view class="footer-fixed">
   <view class="footer">
-    <van-button round color="rgb(65,105,227)" hairline plain class="button">分享到同学 </van-button>
-    <!-- <van-button round  color="rgb(65,105,227)" size="large" class="button-right" bind:click="showPopup">提交个人信息</van-button> -->
-    <van-button round color="rgb(65,105,227)" size="large" class="button-right" bind:click="skipForm">提交个人信息</van-button>
+    <van-button round color="rgb(65,105,227)" hairline plain class="button" open-type="share">分享到同学 </van-button>
+    <van-button round color="rgb(65,105,227)" size="large" class="button-right" open-type="getUserInfo" bind:getuserinfo="skipForm">提交个人信息</van-button>
   </view>
 </view>
 
 <van-dialog id="van-dialog" />
+<van-toast id="van-toast" />

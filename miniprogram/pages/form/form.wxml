@@ -1,4 +1,7 @@
 <view style="background-color:rgb(247,248,250);height:100%;">
+  <image class="top" src="../../images/put.jpg">
+    <van-icon name="arrow-left" size="46rpx" class="close" bind:click="backPage" />
+  </image>
   <van-radio-group value="{{ radio }}" bind:change="onChange">
   <van-cell-group>
     <van-cell
@@ -21,13 +24,13 @@
 </van-radio-group>
 <view style="height:4%;background-color:rgb(247,248,250)"></view>
 <van-cell-group>
-  <van-cell title="{{item}}" value="删除"  wx:for="{{oldCitys}}"/>
+  <van-cell title="{{item}}" value="删除"  wx:for="{{oldCitys}}" bind:click="delete1" data-index="{{index}}" />
 </van-cell-group>
 <van-cell-group>
-  <van-cell title="{{item}}" value="删除"  wx:for="{{citys}}"/>
+  <van-cell title="{{item}}" value="删除"  wx:for="{{citys}}" bind:click="delete2" data-index="{{index}}" />
 </van-cell-group>
 <view class="button-wrap">
-  <van-button type="primary" bind:click="handleShowArea">添加去向地址</van-button>
+  <van-button type="primary" bind:click="handleShowArea" wx:if="{{!isPut}}">添加地址</van-button>
 </view>
 <view style="position:fixed;bottom:10px;width:100%;">
   <van-button type="info" bind:click="handleForm" size="large" round>提交</van-button>
