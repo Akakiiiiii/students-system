@@ -1,13 +1,16 @@
 
 <view class="top-fixed"></view>
 <view class="top-color"></view>
-<view class="text-wrap"><text class="text">人数分布地图</text> </view>
+<view class="text-wrap"><text class="text">本校学生分布地图</text> </view>
 <swiper style="margin-top:-500rpx;" class="card-swiper square-dot" bindchange="cardSwiper" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500" indicator-color="#8799a3" indicator-active-color="#0081ff">
   <swiper-item class="{{cardCur==index?'cur':''}}" wx:for="{{rumors}}" wx:key="index">
     <view class="swiper-item">
-      <image class="background-img" src="{{item}}" >
-      </image>
-    </view>
+        <view class="background-img">
+              <text class="rumors-text">谣言</text>
+              <text class="rumors-title">{{item.title}}</text>
+              <image class="rumors-img" src="../../images/badge-big@2x.5395c013.png"></image>
+        </view>
+      </view>
   </swiper-item>
 </swiper>
 
@@ -27,8 +30,8 @@
 </view>
 
 <view style="padding:0 90rpx 120rpx 90rpx;display:flex;justify-content:space-between;" wx:if="{{showDetail}}">
-<text class="dec-text">在湖北的人数</text>
-<text style="color:rgb(68,183,72);" class="dec-text">安全的人数</text>
+<text class="dec-text">在湖北的学生</text>
+<text style="color:rgb(68,183,72);" class="dec-text">安全的学生</text>
 </view>
 
 <view class="footer-fixed">

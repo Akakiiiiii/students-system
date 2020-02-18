@@ -19,3 +19,7 @@
   justify-content: center;
   padding:20rpx 0;
 }
+.input{
+  background-color: #fff;
+  padding: 20rpx;
+}

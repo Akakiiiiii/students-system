@@ -8,7 +8,7 @@ function initOption(data) {
   return {
     tooltip: {
       trigger: 'item',
-      formatter: '{a0}:{c0}'
+      formatter: '本校学生:{c0}'
     },
     position: 'bottom',
     visualMap: {
@@ -148,6 +148,14 @@ Page({
   },
   onLoad(){
     const self = this
+    wx.request({
+      url: 'https://lab.isaaclin.cn/nCoV/api/rumors',
+      success(res) {
+        self.setData({
+          rumors: res.data.results
+        })
+      }
+    })
   },
   onReady() {
     this.ecComponent = this.selectComponent('#mychart-dom-bar');

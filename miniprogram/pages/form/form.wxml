@@ -2,6 +2,14 @@
   <image class="top" src="../../images/put.jpg">
     <van-icon name="arrow-left" size="46rpx" class="close" bind:click="backPage" />
   </image>
+
+  <input placeholder="姓名" class="input" value="{{name}}" bindinput="changeName">
+  
+  </input>
+  <input placeholder="手机" class="input" type="number" value="{{phone}}" bindinput="changePhone">
+  
+  </input>
+  <view style="height:4%;background-color:rgb(247,248,250)"></view>
   <van-radio-group value="{{ radio }}" bind:change="onChange">
   <van-cell-group>
     <van-cell

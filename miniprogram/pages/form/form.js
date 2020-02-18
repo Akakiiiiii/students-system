@@ -13,7 +13,9 @@ Page({
     oldCitys:[],
     citys:[],
     radio: '1',
-    isPut:false
+    isPut:false,
+    phone:'',
+    name:''
   },
   async handleForm(){
     let citys = []
@@ -22,6 +24,14 @@ Page({
     })
     citys = [...new Set(citys)]
     Toast('提交成功')
+    if (!this.nameTest(this.data.name)){
+      Toast('姓名输入错误')
+      return
+    }
+    if(!this.phoneTest(this.data.phone)){
+      Toast('手机号码输入错误')
+      return
+    }
     if(!citys.length){
       Toast('请选择地址')
       return
@@ -38,12 +48,24 @@ Page({
     await wx.cloud.callFunction({
       name: 'updataUser',
       data: {
+        name:this.data.name,
+        phone:this.data.phone,
         citys: this.data.citys,
         isHot: this.data.radio
       }
     })
     // app.globalData.user.passCity = [...this.data.oldCitys,...this.data.citys]
     wx.navigateBack()
+  },
+  //手机号验证
+  phoneTest(phone){
+    let mPattern = /^1[34578]\d{9}$/;
+    return mPattern.test(phone)
+  },
+  //中文验证
+  nameTest(name){
+    let cnPattern = /[\u4E00-\u9FA5]/;
+    return cnPattern.test(name)
   },
   delete2(e) {
     this.data.citys.splice(e.currentTarget.dataset.index, 1)
@@ -65,6 +87,16 @@ Page({
       citys
     })
     this.setData({ show: false, showArea: false,isPut:true });
+  },
+  changePhone(e){
+    this.setData({
+      phone:e.detail.value
+    })
+  },
+  changeName(e) {
+    this.setData({
+      name: e.detail.value
+    })
   },
   showPopup() {
     this.setData({ show: true });

@@ -9,17 +9,20 @@ const db = cloud.database()
 // 云函数入口函数
 const _ = db.command
 exports.main = async (event, context) => {
+  const {
+    OPENID
+  } = cloud.getWXContext()
+  const {name,phone,citys,isHot} = event
   await db.collection('user').where({
-    openId: event.userInfo.openId
+    openId: OPENID
   }).update({
       data: {
-        passCity: event.citys,
-        isHot: event.isHot - 0,
+        name,
+        phone,
+        passCity: citys,
+        isHot: isHot - 0,
         isCommited:1,
         isPut:true
-      },
-      success(res){
-        _res(res)
       }
     })
   return 'ok'

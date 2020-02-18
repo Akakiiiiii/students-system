@@ -88,6 +88,10 @@ van-tabs{
 .background-img{
   height:300rpx;
   width: 100%;
+  background-image: url(https://cdn.xieyezi.com/nvov.jpg);
+  background-position:center;
+  background-size: cover;
+  color: #fff;
 }
 .rumors-text{
   display: block;
