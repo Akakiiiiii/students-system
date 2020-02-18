@@ -1,7 +1,6 @@
-
 <view class="top-fixed"></view>
 <view class="top-color"></view>
-<view class="text-wrap"><text class="text">本校学生分布地图</text> </view>
+<view class="text-wrap"><text class="text">本校人数分布地图</text> </view>
 <swiper style="margin-top:-500rpx;" class="card-swiper square-dot" bindchange="cardSwiper" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500" indicator-color="#8799a3" indicator-active-color="#0081ff">
   <swiper-item class="{{cardCur==index?'cur':''}}" wx:for="{{rumors}}" wx:key="index">
     <view class="swiper-item">
@@ -13,8 +12,6 @@
       </view>
   </swiper-item>
 </swiper>
-
-
 <view class="container" style="margin-top:50rpx;">
   <ec-canvas ec="{{ec}}" id="mychart-dom-bar"></ec-canvas>
 </view>
@@ -30,6 +27,7 @@
 </view>
 
 <view style="padding:0 90rpx 120rpx 90rpx;display:flex;justify-content:space-between;" wx:if="{{showDetail}}">
+
 <text class="dec-text">在湖北的学生</text>
 <text style="color:rgb(68,183,72);" class="dec-text">安全的学生</text>
 </view>

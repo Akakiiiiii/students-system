@@ -9,6 +9,7 @@ const db = cloud.database()
 // 云函数入口函数
 const _ = db.command
 exports.main = async (event, context) => {
+<<<<<<< HEAD
   const {
     OPENID
   } = cloud.getWXContext()
@@ -16,6 +17,12 @@ exports.main = async (event, context) => {
   if (event.isCommited ){
     let oldCity = await db.collection('user').where({
       openId: OPENID
+=======
+
+  if (event.isCommited ){
+    let oldCity = await db.collection('user').where({
+      openId: event.userInfo.openId
+>>>>>>> 2dc1a544281f960ee8dd28246abfac31c672ab17
     }).get()
     oldCity = oldCity.data[0].passCity[0].substr(0,2)
     for (let i = 0; i < event.citys.length; i++) {

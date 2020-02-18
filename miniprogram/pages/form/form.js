@@ -15,7 +15,7 @@ Page({
     radio: '1',
     isPut:false,
     phone:'',
-    name:''
+    name:'',
   },
   async handleForm(){
     let citys = []
