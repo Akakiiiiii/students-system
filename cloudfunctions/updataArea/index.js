@@ -8,47 +8,37 @@ cloud.init({
 const db = cloud.database()
 // 云函数入口函数
 const _ = db.command
-exports.main = async (event, context) => {
-<<<<<<< HEAD
+exports.main = async(event, context) => {
   const {
     OPENID
   } = cloud.getWXContext()
-
-  if (event.isCommited ){
-    let oldCity = await db.collection('user').where({
-      openId: OPENID
-=======
-
-  if (event.isCommited ){
+  // 如果已经提交过了的学生再提交的话，就把上一次保存地区的人数减1
+  if (event.isCommited) {
     let oldCity = await db.collection('user').where({
       openId: event.userInfo.openId
->>>>>>> 2dc1a544281f960ee8dd28246abfac31c672ab17
     }).get()
-    oldCity = oldCity.data[0].passCity[0].substr(0,2)
-    for (let i = 0; i < event.citys.length; i++) {
-      await db.collection('area').where({
-        name: db.RegExp({
-          regexp: oldCity,
-          options: 's',
-        })
-      }).update({
-        data: {
-          value: _.inc(-1)
-        }
-      })
-    }
-  }
-  for(let i =0;i<event.citys.length;i++){
+    oldCity = oldCity.data[0].passCity[0].substr(0, 2)
     await db.collection('area').where({
       name: db.RegExp({
-        regexp: event.citys[i],
+        regexp: oldCity,
         options: 's',
       })
     }).update({
       data: {
-        value: _.inc(1)
+        value: _.inc(-1)
       }
     })
   }
+  //因为广西省还有内蒙古之类的自治区是不好控制的，所以使用模糊匹配
+  await db.collection('area').where({
+    name: db.RegExp({
+      regexp: event.citys[0],
+      options: 's',
+    })
+  }).update({
+    data: {
+      value: _.inc(1)
+    }
+  })
   return 'ok'
 }

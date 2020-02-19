@@ -1,7 +1,8 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/form/form"
+    "pages/form/form",
+    "pages/detail/detail"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

@@ -9,7 +9,6 @@ const db = cloud.database()
 // 云函数入口函数
 const _ = db.command
 exports.main = async (event, context) => {
-<<<<<<< HEAD
   const {
     OPENID
   } = cloud.getWXContext()
@@ -23,21 +22,7 @@ exports.main = async (event, context) => {
         passCity: citys,
         isHot: isHot - 0,
         isCommited:1,
-        isPut:true
-=======
-  await db.collection('user').where({
-    openId: event.userInfo.openId
-  }).update({
-      data: {
-        passCity: event.citys,
-        isHot: event.isHot - 0,
-        isCommited:1,
-        isPut:true
-      },
-      success(res){
-        _res(res)
->>>>>>> 2dc1a544281f960ee8dd28246abfac31c672ab17
-      }
-    })
+        isPut:true}
+  })
   return 'ok'
 }

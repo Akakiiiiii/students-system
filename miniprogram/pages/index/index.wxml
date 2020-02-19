@@ -1,5 +1,6 @@
 <view class="top-fixed"></view>
 <view class="top-color"></view>
+
 <view class="text-wrap"><text class="text">本校人数分布地图</text> </view>
 <swiper style="margin-top:-500rpx;" class="card-swiper square-dot" bindchange="cardSwiper" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500" indicator-color="#8799a3" indicator-active-color="#0081ff">
   <swiper-item class="{{cardCur==index?'cur':''}}" wx:for="{{rumors}}" wx:key="index">
@@ -26,7 +27,7 @@
 <van-circle value="{{anquan}}" stroke-width="10" size="110" color="{{green}}">{{anquan}}%</van-circle>
 </view>
 
-<view style="padding:0 90rpx 120rpx 90rpx;display:flex;justify-content:space-between;" wx:if="{{showDetail}}">
+<view style="padding:0 90rpx;display:flex;justify-content:space-between;" wx:if="{{showDetail}}">
 
 <text class="dec-text">在湖北的学生</text>
 <text style="color:rgb(68,183,72);" class="dec-text">安全的学生</text>
@@ -34,7 +35,7 @@
 
 <view class="footer-fixed">
   <view class="footer">
-    <van-button round color="rgb(65,105,227)" hairline plain class="button" open-type="share">分享到同学 </van-button>
+    <van-button round color="rgb(65,105,227)" hairline plain class="button" bindtap="skipDetail">管理员页面 </van-button>
     <van-button round color="rgb(65,105,227)" size="large" class="button-right" open-type="getUserInfo" bind:getuserinfo="skipForm">提交个人信息</van-button>
   </view>
 </view>

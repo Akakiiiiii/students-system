@@ -1,0 +1,29 @@
+<image class="top" src="../../images/detail.jpg">
+    <van-icon name="arrow-left" size="46rpx" class="close" bind:click="backPage" />
+</image>
+
+<scroll-view scroll-y="true" class="fill">
+<view class="tip">在湖北的学生</view>
+<view class="form-top">
+<text class="left">姓名</text>
+<text class="right">联系方式</text>
+</view>
+
+<view class="form-item" wx:for="{{passHuBeiList}}" wx:key="index">
+  <text class="left">{{item.name}}</text>
+  <text class="right">{{item.phone}}</text>
+</view>
+
+
+<view class="tip">发热的学生</view>
+
+<view class="form-top">
+<text class="left">姓名</text>
+<text class="right">联系方式</text>
+</view>
+
+<view class="form-item" wx:for="{{hotList}}" wx:key="index">
+  <text class="left">{{item.name}}</text>
+  <text class="right">{{item.phone}}</text>
+</view>
+</scroll-view>

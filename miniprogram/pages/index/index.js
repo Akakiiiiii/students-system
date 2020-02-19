@@ -114,13 +114,19 @@ Page({
         url: '../form/form'
       })
     })
-    // if(!this.data.isLogin){
-    //   Toast('请先登录')
-    //   wx.navigateTo({
-    //     url: '../login/login'
-    //   })
-    // }else {
-    // }
+  },
+  skipDetail(){
+    wx.cloud.callFunction({
+      name:'verification'
+    }).then((res)=>{
+      if(res.result!='ok'){
+        Toast({ message: '您不是管理员', position:'top'})
+          return
+      }
+      wx.navigateTo({
+        url: '../detail/detail',
+      })
+    })
   },
   handleShowDetail(){
     this.setData({
@@ -134,12 +140,6 @@ Page({
         anquan:res.result.anquan
       })
     })
-    // setTimeout(()=>{
-    //   this.setData({
-    //     hubei: 100,
-    //     anquan: 100
-    //   })
-    // },1000)
   },
   cardSwiper(e) {
     this.setData({

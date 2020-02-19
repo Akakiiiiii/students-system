@@ -32,9 +32,6 @@
 </van-radio-group>
 <view style="height:4%;background-color:rgb(247,248,250)"></view>
 <van-cell-group>
-  <van-cell title="{{item}}" value="删除"  wx:for="{{oldCitys}}" bind:click="delete1" data-index="{{index}}" />
-</van-cell-group>
-<van-cell-group>
   <van-cell title="{{item}}" value="删除"  wx:for="{{citys}}" bind:click="delete2" data-index="{{index}}" />
 </van-cell-group>
 <view class="button-wrap">

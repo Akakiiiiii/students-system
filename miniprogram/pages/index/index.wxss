@@ -1,7 +1,6 @@
-
 .top-fixed{
   width: 100%;
-  height: 20%;
+  height: 16%;
   background:linear-gradient(45deg, #39b54a, #8dc63f);
 }
 .top-color{
@@ -34,6 +33,19 @@ ec-canvas {
   height: 350rpx;
   width: 100%;
 }
+.circle{
+  position: absolute;
+  top: 28%;
+  right: 10rpx;
+  width: 70rpx;
+  height: 70rpx;
+  border-radius: 50%;
+  background-color:rgb(65,105,227);
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .top{
   height: 100%;
   display: flex;
@@ -55,10 +67,8 @@ van-tabs{
   font-weight: 600 !important;
 }
 .footer-fixed{
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  width: 100%;
+  margin-top:35rpx;
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
   background-color: #fff;
   padding: 10rpx 0;
