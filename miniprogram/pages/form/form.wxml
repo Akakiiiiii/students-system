@@ -6,9 +6,15 @@
   <input placeholder="姓名" class="input" value="{{name}}" bindinput="changeName">
   
   </input>
-  <input placeholder="手机" class="input" type="number" value="{{phone}}" bindinput="changePhone">
-  
+  <input placeholder="学号" class="input" type="number" value="{{studentId}}" bindinput="changeId">
   </input>
+  <input placeholder="手机" class="input" type="number" value="{{phone}}" bindinput="changePhone">
+  </input>
+  <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}" wx:if="{{!isCommited}}">
+    <view class="input">
+      {{multiArray[0][multiIndex[0]]}}，{{multiArray[1][multiIndex[1]]}}
+    </view>
+  </picker>
   <view style="height:4%;background-color:rgb(247,248,250)"></view>
   <van-radio-group value="{{ radio }}" bind:change="onChange">
   <van-cell-group>

@@ -12,13 +12,28 @@ exports.main = async (event, context) => {
   const {
     OPENID
   } = cloud.getWXContext()
-  const {name,phone,citys,isHot} = event
+  const { name, phone, citys, isHot, studentId, classId} = event
+  if (classId){
+    await db.collection('class').where({
+      classId
+    }).update({
+      data:{
+        commitedSum:_.push({
+          name,
+          phone,
+          citys
+        })
+      }
+    })
+  }
   await db.collection('user').where({
     openId: OPENID
   }).update({
       data: {
         name,
+        studentId,
         phone,
+        classId,
         passCity: citys,
         isHot: isHot - 0,
         isCommited:1,

@@ -29,8 +29,8 @@ exports.main = async (event, context) => {
   data.data.forEach((item) => {
     if (item.isHot == 1) anquan++
   })
-  anquan = Math.floor(((anquan + 13) / data.data.length) * 100)
-  hubei = Math.floor(((hubei + 500) / count) * 100)
+  anquan = Math.floor((anquan / data.data.length) * 100)
+  hubei = Math.floor((hubei / count) * 100)
   return {
     anquan,hubei
   }

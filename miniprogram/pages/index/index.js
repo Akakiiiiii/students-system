@@ -124,7 +124,7 @@ Page({
           return
       }
       wx.navigateTo({
-        url: '../detail/detail',
+        url: '../admin/admin',
       })
     })
   },

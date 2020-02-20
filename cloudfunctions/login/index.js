@@ -15,6 +15,7 @@ exports.main = async (event, context) => {
     Object.assign(event.user, event.userInfo)
     event.user.isPut = false
     event.user.isHot = 0
+    event.user.passCity = []
     await db.add({
       data:event.user
     })
