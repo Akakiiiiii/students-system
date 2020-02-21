@@ -1,1 +1,17 @@
 /* pages/admin/admin.wxss */
+.bg{
+  height: 100%;
+  width: 100%;
+  background-color: rgb(24,144,255);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.button{
+  background-color: #fff;
+  width: 100% !important;
+  margin: 40rpx 0 !important;
+  border-radius: 40rpx !important;
+  color: rgb(85,85,85);
+}

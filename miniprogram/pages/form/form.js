@@ -144,7 +144,6 @@ Page({
               [e.detail.value[1]]
               .id
     })
-    console.log(this.data.classId)
   },
   //手机号验证
   phoneTest(phone){

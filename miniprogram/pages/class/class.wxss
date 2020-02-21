@@ -1,0 +1,30 @@
+.top{
+  height: 25%;
+  width: 100%;
+}
+.close{
+  position: absolute;
+  top:40rpx;
+  left: 15rpx;
+}
+.tip{
+  background-color: rgb(247,248,250);
+  padding: 18rpx;
+  color:rgb(140,153,160);
+}
+.form-top{
+  width: 100%;
+  display: flex;
+}
+.form-item{
+  width: 100%;
+  display: flex;
+  padding: 20rpx 0;
+}
+.item{
+  width: 33%;
+  text-align: center;
+}
+.warn{
+  color: red;
+}

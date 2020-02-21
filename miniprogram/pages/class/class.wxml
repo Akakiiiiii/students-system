@@ -1,0 +1,24 @@
+<image class="top" src="../../images/detail.jpg">
+    <van-icon name="arrow-left" size="46rpx" class="close" bind:click="backPage" />
+</image>
+<picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}" wx:if="{{!isCommited}}">
+    <view style="padding:20rpx;text-align: center;">
+      {{multiArray[0][multiIndex[0]]}}，{{multiArray[1][multiIndex[1]]}}
+    </view>
+</picker>
+<view style="padding:0 90rpx;display:flex;justify-content:center;">
+<van-circle value="{{commitedPercent}}" stroke-width="10"  size="130" color="{{green}}" vx:if="classId">已经提交{{commitedPercent}}%</van-circle>
+</view>
+
+<view class="tip">班级信息</view>
+<view class="form-top">
+<text class="item">姓名</text>
+<text class="item">联系方式</text>
+<text class="item">是否发热</text>
+</view>
+
+<view  wx:for="{{studentList}}" wx:key="index" class="{{item.isHot === 2?'warn form-item':'form-item'}}">
+  <text class="item">{{item.name}}</text>
+  <text class="item">{{item.phone}}</text>
+  <text class="item">{{item.isHot === 1? '无':'有'}}</text>
+</view>

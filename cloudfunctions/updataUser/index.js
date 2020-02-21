@@ -13,15 +13,17 @@ exports.main = async (event, context) => {
     OPENID
   } = cloud.getWXContext()
   const { name, phone, citys, isHot, studentId, classId} = event
+  //第一次提交时会提交所属的班级，将该学生的信息存到相应班级的表中
   if (classId){
     await db.collection('class').where({
       classId
     }).update({
       data:{
-        commitedSum:_.push({
+        commitedStudents:_.push({
           name,
           phone,
-          citys
+          citys,
+          isHot: isHot - 0
         })
       }
     })

@@ -3,7 +3,8 @@
     "pages/index/index",
     "pages/form/form",
     "pages/detail/detail",
-    "pages/admin/admin"
+    "pages/admin/admin",
+    "pages/class/class"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
