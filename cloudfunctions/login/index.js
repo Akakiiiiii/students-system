@@ -8,9 +8,11 @@ const db = cloud.database().collection('user')
 
 // 云函数入口函数
 exports.main = async (event, context) => {
+  const {OPENID} = cloud.getWXContext()
   let result = await db.where({
-      openId: event.userInfo.openId
+    openId: OPENID
   }).get()
+  //如果在数据库没找到该用户，则初始化数据后存入数据库
   if(!result.data.length){
     Object.assign(event.user, event.userInfo)
     event.user.isPut = false
